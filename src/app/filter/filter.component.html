@@ -1,0 +1,20 @@
+<div class="filters">
+  <h1>Filter x23x</h1>
+  Hotel name
+  <input type="text" [formControl]="searchTerm">
+  Price min
+  <select></select>
+  Price max
+  <select></select>
+  </div>
+  <div class="content">
+    <div *ngIf="hotelDataLoading === true">
+      <p>Grabbing hotels...</p>
+    </div>
+    <div *ngIf="hotelDataLoading === false && hotels.length === 0">
+      <p>Can't grab hotels right now. Try refreshing the page</p>
+    </div>
+    <div *ngIf="hotelDataLoading === false && hotels.length > 1">
+      <app-hotel-list [hotels]="currHotels"></app-hotel-list>
+    </div>
+  </div>
