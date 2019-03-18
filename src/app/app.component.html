@@ -1,7 +1,7 @@
 <div class="app-container">
   <div class="content">
     <div class="filters">
-      <h1>Filter</h1>
+      <h1>Filter x23x</h1>
       Hotel name
       <input type="text">
       Price min
@@ -12,6 +12,7 @@
     <div class="hotel-list">
       <img [src]="mockData.hotelStaticContent.mainImage.url" class="photo"/>
       <div class="details">
+        <app-hotel-cell></app-hotel-cell>
         <div>
             {{ mockData.hotelStaticContent.name }}
         </div>
