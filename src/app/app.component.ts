@@ -1,11 +1,33 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { HotelsService } from '../services/hotels.service';
+import { HotelResponse } from '../models/hotel-response';
+
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
+  templateUrl: './app.component.html', 
   styleUrls: ['./app.component.less']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+
+  constructor ( private hotelService: HotelsService) {}
+
+  public hotelData: HotelResponse;
+  public hotelDataLoading: boolean = true;
+  public tries = 1;
+
+  ngOnInit() {
+    this.hotelService.getHotels()
+      .subscribe((resp) => {
+        this.hotelData = resp;
+        this.hotelDataLoading = false;
+      },
+      err => {
+        this.hotelDataLoading = false;
+        this.hotelData = null;
+      });
+  }
+
   public mockData: any = {
     id: '907',
     rewards: {

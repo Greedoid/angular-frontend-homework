@@ -9,22 +9,17 @@
       Price max
       <select></select>
     </div>
-    <div class="hotel-list">
-      <img [src]="mockData.hotelStaticContent.mainImage.url" class="photo"/>
-      <div class="details">
-        <app-hotel-cell></app-hotel-cell>
-        <div>
-            {{ mockData.hotelStaticContent.name }}
+    <div *ngIf="hotelDataLoading === true">
+      <p>Grabbing hotels...</p>
+    </div>
+    <div *ngIf="hotelData === null && hotelDataLoading === false || hotelData && hotelData.success === false">
+      <p>Can't grab hotels right now. Try refreshing the page</p>
+    </div>
+    <div *ngIf="hotelDataLoading === false && hotelData && hotelData.success === true">
+      <div class="hotel-list">
+        <div class="hotel-cell" *ngFor="let hotel of hotelData.results.hotels">
+          <app-hotel-cell [hotelData]="hotel"></app-hotel-cell>
         </div>
-        <div>
-            {{ mockData.hotelStaticContent.neighborhoodName }}
-        </div>
-      </div>
-      <div class="price">
-          {{ mockData.lowestAveragePrice.symbol }}
-          {{ mockData.lowestAveragePrice.amount }}
-          {{ mockData.rewards.miles }}
-          <button>Select</button>
       </div>
     </div>
   </div>

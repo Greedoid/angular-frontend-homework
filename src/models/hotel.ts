@@ -1,5 +1,10 @@
+import { Rewards } from "./rewards";
+import { AveragePrice } from "./average-price";
+import { HotelStatic } from "./hotel-static";
+
 export class Hotel {
-    name: string;
-    price: string;
-    location: string;
+   id: string;
+   rewards: Rewards;
+   lowestAveragePrice: AveragePrice;
+   hotelStaticContent: HotelStatic;
 }

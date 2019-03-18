@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-hotel-cell',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./hotel-cell.component.less']
 })
 export class HotelCellComponent implements OnInit {
+
+  @Input() hotelData: any;
 
   constructor() { }
 

@@ -1,3 +1,15 @@
-<p>
-  hotel-cell works!
-</p>
+<img [src]="hotelData.hotelStaticContent.mainImage.url" class="photo"/>
+<div class="details">
+  <div>
+      {{ hotelData.hotelStaticContent.name }}
+  </div>
+  <div>
+      {{ hotelData.hotelStaticContent.neighborhoodName }}
+  </div>
+</div>
+<div class="price">
+    {{ hotelData.lowestAveragePrice.symbol }}
+    {{ hotelData.lowestAveragePrice.amount }}
+    {{ hotelData.rewards.miles }}
+    <button>Select</button>
+</div>
