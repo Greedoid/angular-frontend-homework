@@ -3,9 +3,13 @@
   Hotel name
   <input type="text" [formControl]="searchTerm">
   Price min
-  <select></select>
+  <input type="text" [formControl]="priceLower">
   Price max
+  <input type="text" [formControl]="priceUpper">
+  Country
   <select></select>
+  City
+  <input type="text" [formControl]="cityTerm">
   </div>
   <div class="content">
     <div *ngIf="hotelDataLoading === true">

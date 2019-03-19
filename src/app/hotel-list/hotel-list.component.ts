@@ -8,7 +8,7 @@ import { Hotel } from 'src/models/hotel';
   templateUrl: './hotel-list.component.html',
   styleUrls: ['./hotel-list.component.less']
 })
-export class HotelListComponent implements OnInit {
+export class HotelListComponent{
 
   @Input() hotels: Hotel[];
 
