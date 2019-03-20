@@ -5,15 +5,14 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HotelListComponent } from '../hotel-list/hotel-list.component';
 import { I18nCountrySelectModule } from 'ngx-i18n-country-select';
 import { HotelCellComponent } from '../hotel-cell/hotel-cell.component';
-import TestData from '../../assets/test_data.json'
 import { Hotel } from 'src/models/hotel';
-
 
 describe('FilterComponent', () => {
   let component: FilterComponent;
   let fixture: ComponentFixture<FilterComponent>;
-  let hotels: Hotel[] = TestData.results.hotels;
-  let filtered_hotels: Hotel[] = TestData.results.hotels.slice(3,10);
+  const testData: any = require('../../assets/test_data.json');
+  let hotels: Hotel[] = testData.results.hotels;
+  let filtered_hotels: Hotel[] = testData.results.hotels.slice(3,10);
 
 
   beforeEach(async(() => {
