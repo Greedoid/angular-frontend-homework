@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { HotelsService } from '../services/hotels.service';
 import { HotelResponse } from '../models/hotel-response';
 import { Hotel } from '../models/hotel';
+import { Observable, timer } from 'rxjs';
+import { take, map } from 'rxjs/operators';
 
 
 @Component({
@@ -11,11 +13,19 @@ import { Hotel } from '../models/hotel';
 })
 export class AppComponent implements OnInit {
 
-  public hotelData: HotelResponse;
+  public hotelData: HotelResponse = new HotelResponse();
   public hotelDataLoading: boolean = true;
-  public hotels: Hotel[];
+  public hotels: Hotel[] = [];
 
-  constructor(private hotelService: HotelsService) { }
+  counter$: Observable<number>
+  count = 10;
+
+  constructor(private hotelService: HotelsService) {
+    this.counter$ = timer(0,1000).pipe (
+      take(this.count),
+      map(()=> --this.count)
+    )
+   }
 
   ngOnInit() {
     this.hotelService.getHotels()
@@ -28,5 +38,10 @@ export class AppComponent implements OnInit {
         this.hotelDataLoading = false;
         this.hotelData = null;
       });
+   this.counter$.subscribe((count) => {
+     if (count < 1 ) {
+       this.hotelDataLoading = false;
+     }
+   }); 
   }
 }

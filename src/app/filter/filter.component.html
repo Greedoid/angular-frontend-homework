@@ -2,6 +2,14 @@
   <div class="filter-body">
     <div class="filter-title">
       <h1>Hotellerie</h1>
+      <div class="errors">
+        <div *ngIf="hotelDataLoading === true">
+          <p>Grabbing hotels...</p>
+        </div>
+        <div *ngIf="hotelDataLoading === false && hotels.length === 0">
+          <p>Can't grab hotels right now. Try refreshing the page</p>
+        </div>
+      </div>
       <div class="chevron-toggle" (click)="toggleFilter()">
         <span *ngIf="filters === true; else bottomChevron" class="chevron top"></span>
         <ng-template #bottomChevron><span class="chevron bottom"></span>
@@ -32,12 +40,6 @@
   </div>
 </div>
 <div class="content">
-  <div *ngIf="hotelDataLoading === true">
-    <p>Grabbing hotels...</p>
-  </div>
-  <div *ngIf="hotelDataLoading === false && hotels.length === 0">
-    <p>Can't grab hotels right now. Try refreshing the page</p>
-  </div>
   <div *ngIf="hotelDataLoading === false && hotels.length > 1">
     <app-hotel-list [hotels]="currHotels"></app-hotel-list>
   </div>

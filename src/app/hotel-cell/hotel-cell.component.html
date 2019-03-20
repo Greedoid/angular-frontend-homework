@@ -1,4 +1,4 @@
-<div class="hotel-cell-holder" (mouseover)="hovering = true" (mouseout)="hovering = false">
+<div class="hotel-cell-holder" *ngIf="hotelData">
  
         <div class="photo-holder">
             <img [src]="hotelData.hotelStaticContent.mainImage.url" class="photo"/>

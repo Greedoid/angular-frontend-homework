@@ -13,7 +13,7 @@ import { Hotel } from '../../models/hotel';
 export class FilterComponent implements OnInit {
 
   @Input() hotels: Hotel[] = [];
-  @Input() hotelDataLoading: boolean;
+  @Input() hotelDataLoading: boolean = false;
   @Input() currHotels: Hotel[] = [];
 
   searchTerm : FormControl = new FormControl();
@@ -35,31 +35,39 @@ export class FilterComponent implements OnInit {
   constructor() { }
 
   clearFields() {
-    this.searchTerm.reset();
-    this.priceUpper.reset();
-    this.priceLower.reset();
-    this.cityTerm.reset();
+    if (this.searchTerm) {
+      this.searchTerm.reset();
+    }
+    if (this.priceUpper) {
+      this.priceUpper.reset();
+    }
+    if (this.priceLower) {
+      this.priceLower.reset();
+    }
+    if (this.cityTerm) {
+      this.cityTerm.reset();
+    }
     this.currHotels = this.hotels;
   }
 
   refilter(passedSearchTerm, passedPriceLower, passedPriceUpper, passedCityTerm, passedCountryCode) {
     this.currHotels = this.hotels;
-    if (passedSearchTerm.length > 2) {
+    if (passedSearchTerm && passedSearchTerm.length > 2) {
       this.currHotels = this.currHotels.filter(function(hotel) {
         return hotel.hotelStaticContent.name.toLowerCase().includes(passedSearchTerm.toLowerCase());
       })
     }
-    if (passedPriceLower >= 50) {
+    if (passedPriceLower && passedPriceLower >= 50) {
       this.currHotels = this.currHotels.filter(function(hotel) {
         return hotel.lowestAveragePrice.amount > Number(passedPriceLower);
       })
     }
-    if (passedPriceUpper >= 50) {
+    if (passedPriceUpper && passedPriceUpper >= 50) {
       this.currHotels = this.currHotels.filter(function(hotel) {
         return hotel.lowestAveragePrice.amount < Number(passedPriceUpper);
       })
     }
-    if (passedCityTerm.length > 2) {
+    if (passedCityTerm && passedCityTerm.length > 2) {
       this.currHotels = this.currHotels.filter(function(hotel) {
         return hotel.hotelStaticContent.address.city.toLowerCase().includes(passedCityTerm.toLowerCase());
       })
@@ -67,6 +75,7 @@ export class FilterComponent implements OnInit {
     this.currHotels = this.currHotels.filter(function(hotel) {
       return hotel.hotelStaticContent.address.countryCode.toLowerCase() == passedCountryCode;
     })
+    //console.log(this.currHotels);
   }
 
   toggleFilter() {

@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
-import {Http} from "@angular/http";
 import { Hotel } from '../models/hotel';
 import { HotelResponse } from '../models/hotel-response';
 import { map, catchError, retryWhen, take } from "rxjs/operators";
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { HotelResult } from '../models/hotel-result';
 import { HotelStatic } from '../models/hotel-static';
 import { HotelAddress } from '../models/hotel-address';
 import { HotelImage } from '../models/hotel-image';
 import { AveragePrice } from '../models/average-price';
 import { Rewards } from '../models/rewards';
+import { HttpClient } from '@angular/common/http';
 
 
 
@@ -21,7 +21,7 @@ export class HotelsService {
   hotel_url: string = 'https://homework-app.rocketmiles.com/fe-homework/rates'
   hotels: Hotel[] = []
 
-  constructor(private http: Http) { }
+  constructor(private http: HttpClient) { }
 
   mapHotelResponse(json: any): HotelResponse {
     var hotelResponse = new HotelResponse();
@@ -89,7 +89,7 @@ export class HotelsService {
     return this.http
       .get(this.hotel_url)
       .pipe(
-        map(response => this.mapHotelResponse(response.json())),
+        map(response => this.mapHotelResponse(response)),
         retryWhen(errors => errors.pipe(take(5)))
     );
   }
