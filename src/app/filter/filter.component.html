@@ -1,24 +1,44 @@
 <div class="filters">
-  <h1>Filter x23x</h1>
-  Hotel name
-  <input type="text" [formControl]="searchTerm">
-  Price min
-  <input type="text" [formControl]="priceLower">
-  Price max
-  <input type="text" [formControl]="priceUpper">
-  Country
-  <select></select>
-  City
-  <input type="text" [formControl]="cityTerm">
+  <div class="filter-body">
+    <div class="filter-title">
+      <h1>Hotellerie</h1>
+      <div class="chevron-toggle" (click)="toggleFilter()">
+        <span *ngIf="filters === true; else bottomChevron" class="chevron top"></span>
+        <ng-template #bottomChevron><span class="chevron bottom"></span>
+        </ng-template>
+      </div>
+    </div>
+  <hr>
+  <div *ngIf="filters === true" class="search-boxes">
+    <div class="search-boxes-row">
+      Hotel name
+      <input type="text" class="form-control" [formControl]="searchTerm">
+      Price (min)
+      <input type="number" class="form-control" [formControl]="priceLower">
+      Price (max)
+      <input type="number" class="form-control" [formControl]="priceUpper">
+    
+      Country
+      <div class="country-select-holder form-control">
+        <i18n-country-select class="country-selector" [(iso3166Alpha2)]="item.isocode" size="sm" (change)="baseRefilter()"></i18n-country-select>
+      </div>
+      City
+      <input type="text" [formControl]="cityTerm" class="form-control"> 
+    </div>
+    <div class="field-clear" (click)="clearFields()">
+        <i class="fa fa-times"></i>
+    </div>
   </div>
-  <div class="content">
-    <div *ngIf="hotelDataLoading === true">
-      <p>Grabbing hotels...</p>
-    </div>
-    <div *ngIf="hotelDataLoading === false && hotels.length === 0">
-      <p>Can't grab hotels right now. Try refreshing the page</p>
-    </div>
-    <div *ngIf="hotelDataLoading === false && hotels.length > 1">
-      <app-hotel-list [hotels]="currHotels"></app-hotel-list>
-    </div>
   </div>
+</div>
+<div class="content">
+  <div *ngIf="hotelDataLoading === true">
+    <p>Grabbing hotels...</p>
+  </div>
+  <div *ngIf="hotelDataLoading === false && hotels.length === 0">
+    <p>Can't grab hotels right now. Try refreshing the page</p>
+  </div>
+  <div *ngIf="hotelDataLoading === false && hotels.length > 1">
+    <app-hotel-list [hotels]="currHotels"></app-hotel-list>
+  </div>
+</div>

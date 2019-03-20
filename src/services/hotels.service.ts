@@ -69,6 +69,7 @@ export class HotelsService {
       currHotelStaticContent.propertyTypeName = json.results.hotels[i].hotelStaticContent.propertyTypeName
       currHotelStaticContent.rating = json.results.hotels[i].hotelStaticContent.rating
       currHotelStaticContent.stars = json.results.hotels[i].hotelStaticContent.stars
+      currHotelStaticContent.neighborhoodName = json.results.hotels[i].hotelStaticContent.neighborhoodName
 
       var currHotelRewards = new Rewards();
       currHotelRewards.miles = json.results.hotels[i].rewards.miles

@@ -9,6 +9,9 @@ export class HotelCellComponent implements OnInit {
 
   @Input() hotelData: any;
 
+  hovering = false;
+  Arr = Array;
+
   constructor() { }
 
   ngOnInit() {

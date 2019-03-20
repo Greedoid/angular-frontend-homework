@@ -1,15 +1,42 @@
-<img [src]="hotelData.hotelStaticContent.mainImage.url" class="photo"/>
-<div class="details">
-  <div>
-      {{ hotelData.hotelStaticContent.name }}
-  </div>
-  <div>
-      {{ hotelData.hotelStaticContent.neighborhoodName }}
-  </div>
-</div>
-<div class="price">
-    {{ hotelData.lowestAveragePrice.symbol }}
-    {{ hotelData.lowestAveragePrice.amount }}
-    {{ hotelData.rewards.miles }}
-    <button>Select</button>
+<div class="hotel-cell-holder" (mouseover)="hovering = true" (mouseout)="hovering = false">
+ 
+        <div class="photo-holder">
+            <img [src]="hotelData.hotelStaticContent.mainImage.url" class="photo"/>
+        </div>
+        <hr>
+        <div class="details-wrapper">
+            <div class="details">
+                <div class="hotel-name">
+                    {{ hotelData.hotelStaticContent.name }}
+                </div>
+                <div class="neighborhood-name-line">
+                    {{ hotelData.hotelStaticContent.neighborhoodName }}
+                    <div class="flex-spacer"></div>
+                    <div *ngFor="let i of Arr(hotelData.hotelStaticContent.stars).fill(1)">
+                        <i class="fa fa-star"></i>
+                    </div>
+                </div>
+                <div class="price-rewards">
+                    <div class="price">
+                        <div class = "price-symbol" [innerHtml]="hotelData.lowestAveragePrice.symbol"></div>
+                        <div class = "price-amount">
+                            {{ hotelData.lowestAveragePrice.amount }}
+                        </div>
+                    </div>
+                <div class="rewards">
+                    Miles: {{ hotelData.rewards.miles }}
+                </div>
+            </div>
+            <div class="ratings-reviews">
+                <div class="ratings">
+                     {{ hotelData.hotelStaticContent.rating }}
+                </div>
+                <div class="reviews">
+                    <i class="fa fa-bullhorn"></i>
+                     {{ hotelData.hotelStaticContent.numberOfReviews }}
+                </div>
+            </div>
+        </div>
+        <button type="button" class="btn btn-primary">Book now!</button>
+    </div>
 </div>

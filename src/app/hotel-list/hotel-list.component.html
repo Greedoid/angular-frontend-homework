@@ -1,9 +1,10 @@
-<div class="hotel-list">
-  <div *ngIf="hotels.length === 0">
-    <p>No hotels to display :(</p>
+  <div class="hotel-list">
+    <div class="no-hotels" *ngIf="hotels.length === 0">
+      <p>No hotels to display :(</p>
+    </div>
+    <div class="hotel-cell" *ngFor="let hotel of hotels">
+      <app-hotel-cell [hotelData]="hotel"></app-hotel-cell>
+    </div>
   </div>
-  <div class="hotel-cell" *ngFor="let hotel of hotels">
-    <app-hotel-cell [hotelData]="hotel"></app-hotel-cell>
-  </div>
-</div>
+
 

@@ -1,0 +1,105 @@
+
+.filters{
+    width: 100%;
+    top:0;    
+    background: #556B2F;
+    opacity: .97;
+    display: flex;
+    position: fixed;
+    z-index: 999;
+
+    .field-clear {
+        height: 1em;
+        width: 1em;
+
+        margin-right: .65em;
+        margin-top: 1em;    
+    }
+
+    
+    h1 {
+        font-size: 60px;
+    }
+
+    .chevron-toggle {
+
+        margin-right: 1em;
+        margin-top: 1em;
+
+        .chevron::before {
+            border-style: solid;
+            border-width: 0.25em 0.25em 0 0;
+            content: '';
+            display: inline-block;
+            height: 1em;
+            left: 0.15em;
+            position: relative;
+            top: 0.15em;
+            transform: rotate(-45deg);
+            vertical-align: top;
+            width: 1em;
+        }
+
+        .chevron.bottom:before {
+            top: 0;
+            transform: rotate(135deg);
+        }    
+    }
+
+
+    hr {
+        margin-left: 1.5em;
+        margin-right: 1.5em;
+        margin-top: 0;
+        background-color: black;    
+        border: black solid 2px;
+
+    }
+
+        .filter-body {
+            margin-left: 20px;
+            margin-right: 20px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 100%;
+    
+            .filter-title {
+                display: flex;
+                justify-content: space-between;
+            }
+
+        .search-boxes {
+
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            
+            .search-boxes-row {
+                font-weight: bold;
+                display: flex;
+                margin-bottom: 20px;
+                margin-top: 10px;
+            }
+        
+            .country-select-holder {
+                margin-left: 10px;
+                margin-right: 10px;
+            }
+
+            input {
+                margin-right: 10px;
+                margin-left: 10px;
+            }
+
+            input[type=number]::-webkit-inner-spin-button, 
+            input[type=number]::-webkit-outer-spin-button { 
+                -webkit-appearance: none; 
+                margin: 0; 
+            }
+        }
+    }
+}
+

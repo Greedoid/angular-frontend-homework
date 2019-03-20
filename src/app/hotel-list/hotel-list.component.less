@@ -1,29 +1,41 @@
-.hotel-cell {
-    width: 100%;
-    display: flex;
-    height: 500px;
+.hotel-list::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    box-shadow: inset 0 0 2000px rgba(255, 255, 255, .5);
 }
 
 
+.hotel-list {
+    padding: 60px;
+    margin-top: 250px;
+    margin-bottom: 60px;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2);	
+    border: lightblue solid 2px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 50px;
+    border-radius: 20px;
+    margin-left: 80px;
+    margin-right: 80px;
 
-    .hotel-list {
-        background: white;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-
-        .details {
-            padding: 10px;
-
-            h1 {
-                font-weight: 400;
-                font-size: 16px;
-            }
-
-            .location {
-                color: #DCDCDC;
-                font-size: 14px;
-            }
+        .hotel-cell {
+            height: 500px;  
+            background: black;        
         }
 
+        .no-hotels {
+            text-align: center;
+            font-weight: bolder;
+            font-size: 16px;
+            color: white;
+        }
     }
+
 
